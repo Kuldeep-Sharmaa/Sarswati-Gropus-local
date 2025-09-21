@@ -65,20 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (sub) {
       gsap.set(sub, { opacity: 0, y: 30 });
-      tl.to(
-        sub,
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.5"
-      );
+      tl.to(sub, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.5");
     }
 
     if (ctas) {
       gsap.set(ctas, { opacity: 0, y: 20 });
-      tl.to(
-        ctas,
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.4"
-      );
+      tl.to(ctas, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.4");
     }
   }
 
