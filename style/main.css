@@ -12,9 +12,9 @@ body {
 }
 
 :root {
-  --slide-1: url(".assets/images/background1.jpg");
-  --slide-2: url(".assets/images/background2.jpg");
-  --slide-3: url(".assets/images/background3.jpg");
+  --slide-1: url("../assets/images/background1.jpg");
+  --slide-2: url("../assets/images/background2.jpg");
+  --slide-3: url("./assets/images/background3.jpg");
   --brand-color: #0f172a;
   --secondary-color: #f4b100;
   --dark-heading-color: #0f172a;
