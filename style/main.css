@@ -12,7 +12,7 @@ body {
 }
 
 :root {
-  --slide-1: url("../assets/images/background1.jpg");
+  --slide-1: url("../assets/images/background.jpg");
   --slide-2: url("../assets/images/background2.jpg");
   --slide-3: url("../assets/images/background3.jpg");
   --brand-color: #0f172a;
@@ -161,7 +161,8 @@ body {
 /* Hero container */
 .hero-rotator {
   position: relative;
-  height: 110vh;
+  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
   color: #fff;
 }
@@ -177,12 +178,14 @@ body {
   inset: 0;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transform: scale(1.05);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  will-change: opacity, transform;
 }
 
 .slide-1 {
@@ -214,16 +217,10 @@ body {
   z-index: 2;
   max-width: 800px;
   padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
+  text-align: center;
 }
 
-.slide.active .hero-text {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.8s ease;
-}
-
+/* Typography */
 .hero-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
@@ -251,9 +248,16 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: #fff;
-  padding: 0.5rem 0.8rem;
+  font-size: 1.5rem;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-controls button:hover {
+  background: rgba(255, 255, 255, 0.35);
 }
 
 /* Hero button style */
@@ -264,6 +268,8 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   padding: clamp(0.6rem, 2vw, 0.9rem) clamp(1rem, 3vw, 1.6rem);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .hero-btn-primary:hover {

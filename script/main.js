@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer;
 
   function animateText(slide) {
+    if (!slide) return;
     const tl = gsap.timeline();
 
     const title = slide.querySelector(".hero-title");
@@ -58,26 +59,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctas = slide.querySelector(".hero-btn");
 
     if (title) {
-      tl.fromTo(
-        title,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
+      gsap.set(title, { opacity: 0, y: 30 });
+      tl.to(title, { y: 0, opacity: 1, duration: 1, ease: "power3.out" });
     }
 
     if (sub) {
-      tl.fromTo(
+      gsap.set(sub, { opacity: 0, y: 30 });
+      tl.to(
         sub,
-        { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
         "-=0.5"
       );
     }
 
     if (ctas) {
-      tl.fromTo(
+      gsap.set(ctas, { opacity: 0, y: 20 });
+      tl.to(
         ctas,
-        { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
         "-=0.4"
       );
@@ -90,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentSlide = slides[current];
     const nextSlide = slides[index];
 
-    // Fade out current slide
+    // Fade out current
     gsap.to(currentSlide, {
       opacity: 0,
       scale: 1.05,
@@ -98,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power2.out",
     });
 
-    // Fade in next slide
+    // Fade in next
     gsap.fromTo(
       nextSlide,
       { opacity: 0, scale: 1.08, xPercent: -3 },
@@ -121,8 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Arrow controls
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
 
   function resetTimer() {
     clearInterval(timer);
@@ -134,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   animateText(slides[0]);
   resetTimer();
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
